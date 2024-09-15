@@ -27,7 +27,7 @@ function LoginPage() {
     if (userId === dummyUser.user && password === dummyUser.password) {
       const authData = { isAuthenticate: true,user:userId };
       localStorage.setItem('auth', JSON.stringify(authData));
-      window.location.reload();
+      navigate('/')
     } else {
       alert('Invalid credentials');
     }
