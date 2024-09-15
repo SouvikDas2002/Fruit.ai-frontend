@@ -24,7 +24,7 @@ function LoginPage({ setAuth }) {
     if (userId === dummyUser.user && password === dummyUser.password) {
       const authData = { isAuthenticate: true, user: userId };
       localStorage.setItem('auth', JSON.stringify(authData));
-      setAuth(authData); // Update the state in the App component
+      setAuth(authData);
       navigate('/');
     } else {
       alert('Invalid credentials');
