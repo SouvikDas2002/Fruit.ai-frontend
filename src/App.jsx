@@ -14,8 +14,8 @@ function App() {
 
   useEffect(() => {
     const storedAuth = localStorage.getItem('auth');
-    if (storedAuth && storedAuth.isAuthenticate==auth.isAuthenticate) {
-      setAuth(storedAuth);
+    if (storedAuth) {
+      setAuth(JSON.parse(storedAuth));
     }
   }, []);
 
@@ -35,8 +35,8 @@ function App() {
         <Route path="/translator" element={<ProtectedRoute isAuthenticated={auth.isAuthenticate}><TranslatorPage /></ProtectedRoute>} />
         <Route path="/faq" element={<ProtectedRoute isAuthenticated={auth.isAuthenticate}><FaqPage /></ProtectedRoute>} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/logout" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage setAuth={setAuth} />} />
+        <Route path="/logout" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>
   );

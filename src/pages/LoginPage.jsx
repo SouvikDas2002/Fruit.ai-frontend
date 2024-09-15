@@ -1,34 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Typography, TextField, Button, Paper } from '@mui/material';
-import HomePage from './HomePage';
 
 const dummyUser = {
   user: 'user@gmail.com',
   password: 'user321',
 };
 
-function LoginPage() {
+function LoginPage({ setAuth }) {
   const [userId, setUserId] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  function handleRedirect(){
+  useEffect(() => {
     const authData = JSON.parse(localStorage.getItem('auth'));
     if (authData && authData.isAuthenticate) {
       navigate('/');
     }
-  }
-  useEffect(() => {
-    handleRedirect()
-  }, []);
+  }, [navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userId === dummyUser.user && password === dummyUser.password) {
-      const authData = { isAuthenticate: true,user:userId };
+      const authData = { isAuthenticate: true, user: userId };
       localStorage.setItem('auth', JSON.stringify(authData));
-      return <HomePage/>
+      setAuth(authData); // Update the state in the App component
+      navigate('/');
     } else {
       alert('Invalid credentials');
     }
