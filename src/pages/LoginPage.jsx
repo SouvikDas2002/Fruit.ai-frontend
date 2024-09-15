@@ -75,13 +75,18 @@ function LoginPage({ setAuth }) {
           <Button
             type="submit"
             variant="contained"
-            color="primary"
+            // color="primary"
             fullWidth
-            sx={{ marginTop: 2 }}
+            sx={{ marginTop: 2,background:"linear-gradient(45deg, #000000 30%, #4f4f4f 90%)" }}
           >
             Login
           </Button>
         </form>
+        <Typography variant='small' sx={{ color:'gray'}}>
+          Test user credentials :<br></br> 
+          <span>userId: user@gmail.com</span><br></br>
+          <span>password: user321</span>
+        </Typography>
       </Paper>
     </Container>
   );
