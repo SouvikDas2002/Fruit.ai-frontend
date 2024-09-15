@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, TextField, Button, List, ListItem, ListItemText, IconButton, Paper, Fab, Collapse, Chip } from '@mui/material';
+import { Container, Typography, TextField, Button, List, ListItem, ListItemText, IconButton, Paper, Fab, Collapse, Chip, CircularProgress } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -15,6 +15,7 @@ const FaqPage = () => {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [editingFaq, setEditingFaq] = useState(null);
+  const [loading,setLoading]=useState(true);
 
   // console.log(JSON.parse(localStorage.getItem('auth')).user);
   const user=JSON.parse(localStorage.getItem('auth')).user
@@ -24,6 +25,7 @@ const FaqPage = () => {
   }, []);
 
   const fetchFaqs = async () => {
+    setLoading(true)
     try {
       const response = await axios.get(`${import.meta.env.VITE_SERVICE_URL}/faqs`);
       const fetchedFaqs = response.data;
@@ -32,6 +34,8 @@ const FaqPage = () => {
       setCategories(uniqueCategories);
     } catch (error) {
       console.error('Failed to fetch FAQs:', error);
+    }finally{
+      setLoading(false)
     }
   };
 
@@ -232,8 +236,18 @@ const FaqPage = () => {
         />
       </div>
 
+      {loading?(
+        <CircularProgress
+        sx={{
+          display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            margin: 4,
+        }}
+        />
+      ):(  
       <List sx={{ width: '100%', maxWidth: { xs: '100%', sm: 500, md: 600 } }}>
-        {filteredFaqs.map((faq) => (
+        {filteredFaqs && filteredFaqs.map((faq) => (
           <ListItem
             key={faq._id}
             divider
@@ -296,6 +310,7 @@ const FaqPage = () => {
           </ListItem>
         ))}
       </List>
+      )}  
     </Container>
   );
 };
