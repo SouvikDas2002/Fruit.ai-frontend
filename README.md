@@ -7,7 +7,7 @@ Fruit.ai is a health management application that offers comprehensive informatio
 ### Frontend (React)
 
 - **`src/`**
-  - **`components/`**: Contains reusable components like `FruitList`, `Navbar`, and `AuthContext`.
+  - **`components/`**: Contains reusable components like `FruitList`, `Navbar`, and `ProtectedRoute`.
   - **`pages/`**: Includes page components such as `LoginPage`, `HomePage`, `ChatbotPage`, `TranslatorPage`, `FAQPage`, and `AboutPage`.
   - **`App.js`**: The entry point for the React application.
   - **`index.js`**: Renders the React app into the DOM.
@@ -111,7 +111,7 @@ These are hardcoded in the login page.
 
 - **Frontend**: Built using React for a dynamic and responsive UI, with Material-UI for styling.
 - **Backend**: Powered by Flask to manage API requests and MongoDB Atlas for database storage.
-- **State Management**: Authentication is handled via React’s Context API.
+- **State Management**: Authentication is handled via LocalStorage with a dummy data.
 - **Deployment**: Frontend is deployed on Vercel, and backend will be hosted on Render for production.
 
 ## Repositories
