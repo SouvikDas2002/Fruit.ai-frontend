@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Typography, TextField, Button, Paper } from '@mui/material';
+import HomePage from './HomePage';
 
 const dummyUser = {
   user: 'user@gmail.com',
@@ -27,7 +28,7 @@ function LoginPage() {
     if (userId === dummyUser.user && password === dummyUser.password) {
       const authData = { isAuthenticate: true,user:userId };
       localStorage.setItem('auth', JSON.stringify(authData));
-      navigate('/')
+      return <HomePage/>
     } else {
       alert('Invalid credentials');
     }

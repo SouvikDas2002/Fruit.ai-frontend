@@ -45,6 +45,7 @@ function Navbar() {
                 <MenuItem onClick={handleMenuClose} component={Link} to="/translator">Translator</MenuItem>
                 <MenuItem onClick={handleMenuClose} component={Link} to="/faq">FAQ</MenuItem>
                 <MenuItem onClick={handleMenuClose} component={Link} to="/about">About</MenuItem>
+                <MenuItem onClick={handleMenuClose} component={Link} to="/logout">Logout</MenuItem>
               </Menu>
             </>
           ) : (
@@ -54,6 +55,7 @@ function Navbar() {
               <Button color="inherit" component={Link} to="/translator">Translator</Button>
               <Button color="inherit" component={Link} to="/faq">FAQ</Button>
               <Button color="inherit" component={Link} to="/about">About</Button>
+              <Button color="inherit" component={Link} to="/logout">Logout</Button>
             </>
           )}
         </Toolbar>
