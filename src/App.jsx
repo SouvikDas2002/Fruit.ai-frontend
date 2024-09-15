@@ -36,6 +36,7 @@ function App() {
         <Route path="/faq" element={<ProtectedRoute isAuthenticated={auth.isAuthenticate}><FaqPage /></ProtectedRoute>} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/logout" element={<LoginPage />} />
       </Routes>
     </Router>
   );
